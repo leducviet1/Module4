@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/base::layout(~{::content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="content">
+    <div th:replace="~{fragments/header :: header(myText='Trang Home')}"></div>
+    Today: <span th:text="'Hôm nay là ngày: ' + ${today}"></span>
+    <a th:href="@{/students}">Danh sách sinh viên</a>
+    <!--<div th:object="${student}">-->
+    <!--    <p th:text="*{code}"></p>-->
+    <!--    <p th:text="*{name}"></p>-->
+    <!--</div>-->
+    <ul th:each="student: ${students}">
+        <li th:text="${student.name}">
+        </li>
+    </ul>
+    <table>
+        <tr>
+            <th>Mã Sinh Viên</th>
+            <th>Họ và tên</th>
+            <th>GPA</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.code}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.gpa}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

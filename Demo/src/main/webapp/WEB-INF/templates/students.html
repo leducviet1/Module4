@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Danh sách sinh viên</title>
+</head>
+<body>
+<h3>Danh sách sinh viên</h3>
+<!-- flash message-->
+<div th:if="${message}" style="color: red;" th:text="${message}"></div>
+<a th:href="@{/students/create}">Thêm sinh viên</a>
+
+<!--Thanh công cụ -->
+<form action="">
+    <input type="text" name="q" id="">
+    <select name="sort" >
+        <option value="code">Mã sinh viên</option>
+        <option value="name">Tên sinh viên</option>
+        <option value="gpa">Điểm sinh viên</option>
+    </select>
+    <select name="dir" >
+        <option value="asc">Tăng dần</option>
+        <option value="desc">Giảm dần</option>
+    </select>
+    <button type="submit">Lọc</button>
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Mã</th>
+        <th>Tên</th>
+        <th>Avatar</th>
+        <th>GPA</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td > <a th:href="@{/students/{code}(code=${student.code})}" th:text="${student.code}"></a> </td>
+        <td th:text="${student.name}"></td>
+        <td ><img th:src="@{${student.avatar}}" width="40"></td>
+        <td th:text="${student.gpa}"></td>
+        <td>
+            <a th:href="@{/students/edit/{code}(code=${student.code})}">Sửa</a>
+            <a th:href="@{/students/delete/{code}(code=${student.code})}">Xóa</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout::layout(~{::pageContent})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="pageContent">
+    <form th:action="@{song/new}" method="post" th:object="${song}" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}">
+        Tên bài : <input type="text" th:field="*{title}"> <br>
+        <!--         <input type="text" th:field="*{artist}">-->
+        Nghệ sĩ:
+        <select  th:field="*{artist}">
+            <option th:each="artist : ${artists}" th:value="${artist.id}" th:text="${artist.name}"></option>
+        </select>
+        <br>
+        Thể loại: <input type="text" th:field="*{genre}"> <br>
+        <input type="file" th:field="*{filePath}">
+
+        <button type="submit">Thêm</button>
+    </form>
+</div>
+
+</body>
+</html>

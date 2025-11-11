@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Today: <span th:text="'Hôm nay là ngày: ' + ${today}">
+</span>
+<a th:href="@{/students}">Danh sách sinh viên</a>
+<!--<div th:object="${student}">-->
+<!--    <p th:text="*{code}"></p>-->
+<!--    <p th:text="*{name}"></p>-->
+<!--</div>-->
+<ul th:each="student: ${students}">
+<li th:text="${student.name}">
+</li>
+</ul>
+<table>
+    <tr>
+        <th>Mã Sinh Viên</th>
+        <th>Họ và tên</th>
+        <th>GPA</th>
+    </tr>
+</table>
+</body>
+</html>

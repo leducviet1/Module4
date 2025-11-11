@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="edb4aa6e-2277-4aa4-b098-7e53c6239dd5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/webapp/WEB-INF/templates/song/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/controllers/ArtistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/controllers/ArtistController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/controllers/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/controllers/SongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/repositories/ArtistRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/repositories/ArtistRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/repositories/IArtistRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/repositories/IArtistRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/repositories/ISongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/repositories/ISongRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/repositories/SongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/repositories/SongRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/services/IMusicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/services/IMusicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/services/MusicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/java/com/example/songapp/services/MusicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/webapp/WEB-INF/templates/song/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../b1_17_09/SongApp/src/main/webapp/WEB-INF/templates/song/list.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="35K7obMU7xyfC8fc9bZB0f2LAxb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "I:/Codegym(Code)/Module4/SpringBoot",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="edb4aa6e-2277-4aa4-b098-7e53c6239dd5" name="Changes" comment="" />
+      <created>1762847084647</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762847084647</updated>
+      <workItem from="1762847085847" duration="15000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
