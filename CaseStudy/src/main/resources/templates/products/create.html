@@ -8,9 +8,21 @@
 <form th:action="@{/products/create}" method="post" th:object="${product}" enctype="multipart/form-data" >
     <input type="hidden" name="" th:field="*{id}"> <br>
     Tên sản phẩm  : <input type="text" th:field="*{nameProduct}"> <br>
+    <span th:if="${#fields.hasErrors('nameProduct')}"
+          th:errors="*{nameProduct}"
+          class="text-danger"></span> <br>
     Giá sản phẩm : <input type="text" th:field="*{price}"> <br>
-    Ảnh sản phẩm <input type="text" th:field="*{image}"> <br>
+    <span th:if="${#fields.hasErrors('price')}"
+          th:errors="*{price}"
+          class="text-danger"></span> <br>
+    Ảnh sản phẩm:
+    <input type="file" name="imageProduct" accept="image/*">
+<!--    <input type="text" th:field="*{image}">-->
+    <br>
     Mô tả sản phẩm <input type="text" th:field="*{description}"> <br>
+    <span th:if="${#fields.hasErrors('description')}"
+          th:errors="*{description}"
+          class="text-danger"></span> <br>
     The loai sản phẩm:
     <select th:field="*{category}" required>
          <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>

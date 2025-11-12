@@ -19,10 +19,10 @@
         <td th:text="*{id}"></td>
         <td th:text="*{nameProduct}"></td>
         <td th:text="*{price}"></td>
-        <td th:text="*{image}"></td>
+        <td><img th:src="@{${product.image}}" alt="" width="500"></td>
         <td th:text="*{description}"></td>
-        <td th:text="*{category}"></td>
-        <td th:text="*{inStock}"></td>
+        <td th:text="*{category.name}"></td>
+        <td th:text="${product.inStock} ? 'Còn hàng' : 'Hết hàng'"></td>
     </tr>
 </table>
 </body>

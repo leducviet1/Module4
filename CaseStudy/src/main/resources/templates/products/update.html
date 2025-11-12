@@ -5,11 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/products/update}" method="post" th:object="${product}" >
+<form th:action="@{/products/update}" method="post" th:object="${product}" enctype="multipart/form-data" >
     <input type="hidden" name="" th:field="*{id}"> <br>
     Tên sản phẩm  : <input type="text" th:field="*{nameProduct}"> <br>
     Giá sản phẩm : <input type="text" th:field="*{price}"> <br>
-    Ảnh sản phẩm <input type="text" th:field="*{image}"> <br>
+    Ảnh sản phẩm :<img th:if="${product.image}" th:src="@{${product.image}}" alt="image" width="200">
+    <input type="file" name="imageProduct" > <br>
+<!--    <input type="text" th:field="*{image}"> <br>-->
     Mô tả sản phẩm <input type="text" th:field="*{description}"> <br>
     The loai sản phẩm <input type="text" th:field="*{category}"> <br>
     Tình trạng <input type="text" th:field="*{inStock}"> <br>

@@ -33,7 +33,7 @@ public class Product{
 
     private String image;
 
-    @Size(max = 100)
+    
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER,optional = false)
