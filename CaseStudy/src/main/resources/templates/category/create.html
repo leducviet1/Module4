@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/categories/create}" method="post" th:object="${category}" >
+    <input type="hidden" name="" th:field="*{id}"> <br>
+    Tên thể loại  : <input type="text" th:field="*{name}"> <br>
+
+    <button type="submit">Lưu</button>
+</form>
+</body>
+</html>
