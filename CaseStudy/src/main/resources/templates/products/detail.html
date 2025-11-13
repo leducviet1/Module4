@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 8px;
+        }
+        .detail {
+            line-height: 1.8;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 18px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 th:text="${product.nameProduct}">Tên sản phẩm</h2>
+
+    <div class="product-image">
+        <img th:src="@{${product.image}}" alt="Ảnh sản phẩm">
+    </div>
+
+    <div class="detail">
+        <p><strong>Giá:</strong> <span th:text="${product.price} + ' VND'"></span></p>
+        <p><strong>Mô tả:</strong> <span th:text="${product.description}"></span></p>
+        <p><strong>Thể loại:</strong> <span th:text="${product.category.name}"></span></p>
+        <p><strong>Tình trạng:</strong>
+            <span th:text="${product.inStock} ? 'Còn hàng' : 'Hết hàng'"></span>
+        </p>
+    </div>
+
+    <a class="back-btn" th:href="@{/products}">← Quay lại danh sách</a>
+</div>
+</body>
+</html>

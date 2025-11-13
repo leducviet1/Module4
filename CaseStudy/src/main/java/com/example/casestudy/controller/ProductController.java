@@ -99,4 +99,10 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("message","Product deleted successfully");
         return "redirect:/products";
     }
+    @GetMapping("/detail/{id}")
+    public String detailProduct(@PathVariable("id")Long id, Model model) {
+        Product product = productService.findProductById(id).orElse(null);
+        model.addAttribute("product",product);
+        return "products/detail";
+    }
 }
