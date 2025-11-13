@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(pageContent)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My App</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">My App</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/products}">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/categories}">Thể loại</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light btn-sm" th:href="@{/logout}">Đăng xuất</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mt-5 pt-4">
+    <!-- Chèn nội dung pageContent vào đây -->
+    <div th:replace="${pageContent}"></div>
+</main>
+
+<footer class="bg-light text-center text-muted py-3 mt-4">
+    © 2025 My App
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

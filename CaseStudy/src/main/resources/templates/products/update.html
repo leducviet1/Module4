@@ -1,21 +1,102 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" >-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form th:action="@{/products/update}" method="post" th:object="${product}" enctype="multipart/form-data" >-->
+<!--    <input type="hidden" name="" th:field="*{id}"> <br>-->
+<!--    Tên sản phẩm  : <input type="text" th:field="*{nameProduct}"> <br>-->
+<!--    Giá sản phẩm : <input type="text" th:field="*{price}"> <br>-->
+<!--    Ảnh sản phẩm :<img th:if="${product.image}" th:src="@{${product.image}}" alt="image" width="200">-->
+<!--    <input type="file" name="imageProduct" > <br>-->
+<!--&lt;!&ndash;    <input type="text" th:field="*{image}"> <br>&ndash;&gt;-->
+<!--    Mô tả sản phẩm <input type="text" th:field="*{description}"> <br>-->
+<!--    The loai sản phẩm-->
+<!--    <select th:field="*{category}" required>-->
+<!--        <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>-->
+<!--    </select> <br>-->
+<!--&lt;!&ndash;    <input type="text" th:selected="${product.category}" th:field="*{category}"> <br>&ndash;&gt;-->
+<!--    Tình trạng <input type="text" th:field="*{inStock}"> <br>-->
+<!--    <button type="submit">Lưu</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout::layout(~{::pageContent})}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sửa sản phẩm</title>
 </head>
 <body>
-<form th:action="@{/products/update}" method="post" th:object="${product}" enctype="multipart/form-data" >
-    <input type="hidden" name="" th:field="*{id}"> <br>
-    Tên sản phẩm  : <input type="text" th:field="*{nameProduct}"> <br>
-    Giá sản phẩm : <input type="text" th:field="*{price}"> <br>
-    Ảnh sản phẩm :<img th:if="${product.image}" th:src="@{${product.image}}" alt="image" width="200">
-    <input type="file" name="imageProduct" > <br>
-<!--    <input type="text" th:field="*{image}"> <br>-->
-    Mô tả sản phẩm <input type="text" th:field="*{description}"> <br>
-    The loai sản phẩm <input type="text" th:field="*{category}"> <br>
-    Tình trạng <input type="text" th:field="*{inStock}"> <br>
-    <button type="submit">Lưu</button>
-</form>
+
+<div th:fragment="pageContent">
+
+    <h2 class="mb-3">Sửa sản phẩm</h2>
+
+    <form th:action="@{/products/update}" method="post" th:object="${product}" enctype="multipart/form-data" class="row g-3">
+
+        <input type="hidden" th:field="*{id}">
+
+        <!-- Tên sản phẩm -->
+        <div class="col-md-6">
+            <label class="form-label">Tên sản phẩm</label>
+            <input type="text" th:field="*{nameProduct}" class="form-control" placeholder="Nhập tên sản phẩm">
+            <div class="text-danger" th:if="${#fields.hasErrors('nameProduct')}" th:errors="*{nameProduct}"></div>
+        </div>
+
+        <!-- Giá sản phẩm -->
+        <div class="col-md-6">
+            <label class="form-label">Giá sản phẩm</label>
+            <input type="text" th:field="*{price}" class="form-control" placeholder="Nhập giá">
+            <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+        </div>
+
+        <!-- Ảnh sản phẩm -->
+        <div class="col-md-6">
+            <label class="form-label">Ảnh sản phẩm hiện tại</label>
+            <div th:if="${product.image}">
+                <img th:src="@{${product.image}}" alt="image" class="img-thumbnail mb-2" style="width:200px;">
+            </div>
+            <label class="form-label">Thay ảnh mới</label>
+            <input type="file" name="imageProduct" class="form-control">
+        </div>
+
+        <!-- Mô tả sản phẩm -->
+        <div class="col-md-6">
+            <label class="form-label">Mô tả sản phẩm</label>
+            <input type="text" th:field="*{description}" class="form-control" placeholder="Nhập mô tả">
+            <div class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+        </div>
+
+        <!-- Thể loại -->
+        <div class="col-md-6">
+            <label class="form-label">Thể loại</label>
+            <select th:field="*{category}" class="form-select" required>
+                <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>
+            </select>
+        </div>
+
+        <!-- Tình trạng -->
+        <div class="col-md-6">
+            <label class="form-label">Tình trạng</label>
+            <select th:field="*{inStock}" class="form-select">
+                <option th:value="true" th:selected="${product.inStock}">Còn hàng</option>
+                <option th:value="false" th:selected="${!product.inStock}">Hết hàng</option>
+            </select>
+        </div>
+
+        <!-- Nút submit -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a th:href="@{/products}" class="btn btn-secondary ms-2">Hủy</a>
+        </div>
+
+    </form>
+
+</div>
+
 </body>
 </html>

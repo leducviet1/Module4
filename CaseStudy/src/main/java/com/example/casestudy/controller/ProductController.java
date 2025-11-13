@@ -6,6 +6,8 @@ import com.example.casestudy.service.IProductService;
 import com.example.casestudy.service.StorageService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,11 +30,49 @@ public class ProductController {
     @Autowired
     private StorageService storageService;
 
-    @GetMapping
-    public String listProducts(Model model, @ModelAttribute("message") String message) {
-        model.addAttribute("products",productService.findAllProducts());
-        return "/products/list";
-    }
+//    @GetMapping
+//    public String listProducts(Model model, @ModelAttribute("message") String message, Pageable pageable) {
+//        model.addAttribute("products",productService.findAllProducts(pageable));
+//        return "/products/list";
+//    }
+@GetMapping
+public String listProducts(
+        Model model,
+        @RequestParam(value = "name", required = false) String name,
+        @RequestParam(value = "categoryId", required = false) Long categoryId,
+        @RequestParam(value = "inStock", required = false) Boolean inStock,
+        @RequestParam(value = "minPrice", required = false) Double minPrice,
+        @RequestParam(value = "maxPrice", required = false) Double maxPrice,
+        @RequestParam(value = "sortField", defaultValue = "id") String sortField,
+        @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
+        @RequestParam(value = "page", defaultValue = "1") int page,
+        @RequestParam(value = "size", defaultValue = "5") int size
+) {
+    Page<Product> products = productService.searchAndFilter(
+            name, categoryId, inStock, minPrice, maxPrice,
+            sortField, sortDir, page, size
+    );
+
+    model.addAttribute("products", products);
+    model.addAttribute("currentPage", products.getNumber() + 1);
+    model.addAttribute("totalPages", products.getTotalPages());
+    model.addAttribute("totalItems", products.getTotalElements());
+    model.addAttribute("sortField", sortField);
+    model.addAttribute("sortDir", sortDir);
+    model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
+    // giữ filter values để Thymeleaf giữ form search
+    model.addAttribute("name", name);
+    model.addAttribute("categoryId", categoryId);
+    model.addAttribute("inStock", inStock);
+    model.addAttribute("minPrice", minPrice);
+    model.addAttribute("maxPrice", maxPrice);
+
+    model.addAttribute("categories", categoryService.findAllCategories());
+
+    return "products/list";
+}
+
     @GetMapping("/create")
     public String createForm(Model model) {
         model.addAttribute("product",new Product());
@@ -69,6 +109,7 @@ public class ProductController {
         Optional<Product> product = productService.findProductById(id);
         if (product.isPresent()) {
             ModelAndView mav = new ModelAndView("products/update");
+            model.addAttribute("categories", categoryService.findAllCategories());
             mav.addObject("product",product.get());
             return mav;
         }else {
@@ -105,4 +146,23 @@ public class ProductController {
         model.addAttribute("product",product);
         return "products/detail";
     }
+//    @GetMapping("/search-filter")
+//    public String searchAndFilter(
+//            @RequestParam(value = "name", required = false) String name,
+//            @RequestParam(value = "categoryId", required = false) Long categoryId,
+//            @RequestParam(value = "inStock", required = false) Boolean inStock,
+//            @RequestParam(value = "minPrice", required = false) Double minPrice,
+//            @RequestParam(value = "maxPrice", required = false) Double maxPrice,
+//            @RequestParam(required = false, defaultValue = "price") String sortField,
+//            @RequestParam(required = false, defaultValue = "asc") String sortDir,
+//            @RequestParam(value = "page", defaultValue = "1") int page,
+//            @RequestParam(value = "size", defaultValue = "5") int size,
+//            Model model
+//    ) {
+//        Page<Product> products = productService.searchAndFilter(name, categoryId, inStock, minPrice, maxPrice, sortField,sortDir,page,size);
+//        model.addAttribute("products", products);
+//
+//        return "products/list";
+//    }
+
 }
