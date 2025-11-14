@@ -1,19 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::pageContent})}">
+<meta charset="UTF-8">
 <body>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Category_name</th>
-    </tr>
-    <tr th:each="category : ${categories}" th:object="${category}">
-        <td th:text="*{id}"></td>
-        <td th:text="*{name}"></td>
-    </tr>
-</table>
+<div th:fragment="pageContent">
+
+    <div class="container mt-4">
+        <div class="card shadow-sm p-4">
+
+            <h2 class="text-center mb-4" th:text="#{category.list.title}">Quản lý thể loại</h2>
+
+            <!-- Nút thêm mới -->
+            <div class="mb-3 text-end">
+                <a class="btn btn-success" th:href="@{/categories/create}">+ Thêm thể loại</a>
+            </div>
+
+            <!-- Bảng thể loại -->
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên thể loại</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="category : ${categories}">
+                    <td th:text="${category.id}">1</td>
+                    <td th:text="${category.name}">Tên thể loại</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm"
+                           th:href="@{/categories/update/{id}(id=${category.id})}">Sửa</a>
+                        <a class="btn btn-danger btn-sm"
+                           th:href="@{/categories/delete/{id}(id=${category.id})}">Xóa</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- Quay lại trang chính -->
+            <div class="mt-3">
+                <a class="btn btn-secondary" th:href="@{/home}">← Quay lại trang chính</a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class CategoryController {
         return "redirect:/categories";
     }
     @GetMapping("/update/{id}")
-    public ModelAndView showUpdateForm(@PathVariable("id") Long id, Model model) {
+    public ModelAndView showUpdateForm(@PathVariable("id") Long id) {
         Optional<Category> category = categoryService.findCategoryById(id);
         if (category.isPresent()) {
             ModelAndView mav = new ModelAndView("category/update");
@@ -45,7 +45,7 @@ public class CategoryController {
         }
     }
     @PostMapping("/update")
-    public String updateCategory(@ModelAttribute("product") Category category, RedirectAttributes redirectAttributes) {
+    public String updateCategory(@ModelAttribute("category") Category category, RedirectAttributes redirectAttributes) {
         categoryService.updateCategory(category);
         redirectAttributes.addFlashAttribute("message","Category updated successfully");
         return "redirect:/categories";

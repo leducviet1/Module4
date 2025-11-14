@@ -14,6 +14,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.authorization.SingleResultAuthorizationManager.permitAll;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -52,7 +54,13 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
                     .defaultSuccessUrl("/home")
                     .permitAll()
             )
-            .logout(logout -> logout.permitAll())
+            .logout(logout -> logout
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                    .permitAll()
+            )
             .build();
 }
     @Bean

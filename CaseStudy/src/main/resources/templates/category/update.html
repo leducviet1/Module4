@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::pageContent})}">
+<meta charset="UTF-8">
 <body>
+<div th:fragment="pageContent">
 
+    <div class="container mt-4">
+        <div class="card shadow-sm p-4">
+
+            <h2 class="text-center mb-4">Cập nhật thể loại</h2>
+
+            <!-- Flash message -->
+            <div th:if="${message}" class="alert alert-success" role="alert">
+                <span th:text="${message}"></span>
+            </div>
+
+            <!-- Form sửa thể loại -->
+            <form th:action="@{/categories/update}" th:object="${category}" method="post" class="row g-3">
+                <!-- Hidden ID -->
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Tên thể loại:</label>
+                    <input type="text" id="name" th:field="*{name}" placeholder="Nhập tên thể loại"
+                           class="form-control" required>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <a class="btn btn-secondary" th:href="@{/categories}">← Quay lại</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
