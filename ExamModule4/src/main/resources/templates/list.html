@@ -1,62 +1,4 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Danh sách Promotion</title>-->
-<!--</head>-->
-<!--<body>-->
 
-<!--<h2>Danh sách Khuyến mãi</h2>-->
-<!--<a th:href="@{/promotions/create}">Thêm khuyến mãi</a>-->
-<!--<form th:action="@{/promotions/search}" method="get">-->
-
-<!--    <label>Mức giảm giá:</label>-->
-<!--    <input type="number" name="discount" th:value="${discount}">-->
-
-<!--    <label>Ngày bắt đầu:</label>-->
-<!--    <input type="date" name="startDate" th:value="${startDate}">-->
-
-<!--    <label>Ngày kết thúc:</label>-->
-<!--    <input type="date" name="endDate" th:value="${endDate}">-->
-
-<!--    <button type="submit">Tìm kiếm</button>-->
-<!--</form>-->
-
-<!--<br>-->
-<!--<table border="1" cellpadding="5">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>ID</th>-->
-<!--        <th>Tiêu đề</th>-->
-
-<!--        <th>Ngày bắt đầu</th>-->
-<!--        <th>Ngày kết thúc</th>-->
-<!--        <th>Mức giảm giá</th>-->
-<!--        <th>Chi tiết</th>-->
-<!--        <th>Thao tác</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-
-<!--    <tbody>-->
-<!--    <tr th:each="p : ${promotions}">-->
-<!--        <td th:text="${p.id}"></td>-->
-<!--        <td th:text="${p.title}"></td>-->
-
-<!--        <td th:text="${p.startDate}"></td>-->
-<!--        <td th:text="${p.endDate}"></td>-->
-<!--        <td th:text="${p.discount}"></td>-->
-<!--        <td th:text="${p.details}"></td>-->
-<!--        <td>-->
-<!--            <a th:href="@{/promotions/delete/{id}(id=${p.id})}"-->
-<!--               onclick="return confirm('Bạn có chắc muốn xóa chương trình khuyến mãi  này?')">Xóa</a>-->
-<!--           <a href=""></a>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -73,7 +15,7 @@
 
 <a class="btn btn-primary mb-3" th:href="@{/promotions/create}">Thêm khuyến mãi</a>
 
-<!-- FORM TÌM KIẾM -->
+
 <div class="card p-3 mb-4">
     <form class="row g-3" th:action="@{/promotions/search}" method="get">
 
@@ -98,7 +40,7 @@
     </form>
 </div>
 
-<!-- BẢNG DANH SÁCH -->
+
 <table class="table table-bordered table-striped">
     <thead class="table-dark">
     <tr>
