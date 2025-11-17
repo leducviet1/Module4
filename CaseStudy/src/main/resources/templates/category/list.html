@@ -12,7 +12,7 @@
 
             <!-- Nút thêm mới -->
             <div class="mb-3 text-end">
-                <a class="btn btn-success" th:href="@{/categories/create}">+ Thêm thể loại</a>
+                <a class="btn btn-success" th:href="@{/categories/create}" th:text="#{category.create.title}">+ Thêm thể loại</a>
             </div>
 
             <!-- Bảng thể loại -->
@@ -40,7 +40,7 @@
 
             <!-- Quay lại trang chính -->
             <div class="mt-3">
-                <a class="btn btn-secondary" th:href="@{/home}">← Quay lại trang chính</a>
+                <a class="btn btn-secondary" th:href="@{/home}" th:text="#{category.home}">← Quay lại trang chính</a>
             </div>
 
         </div>

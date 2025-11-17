@@ -8,7 +8,7 @@
     <div class="container mt-4">
         <div class="card shadow-sm p-4">
 
-            <h2 class="text-center mb-4">Cập nhật thể loại</h2>
+            <h2 class="text-center mb-4" th:text="#{category.update.title}">Cập nhật thể loại</h2>
 
             <!-- Flash message -->
             <div th:if="${message}" class="alert alert-success" role="alert">
@@ -27,8 +27,8 @@
                 </div>
 
                 <div class="col-12 mt-3">
-                    <button type="submit" class="btn btn-primary">Cập nhật</button>
-                    <a class="btn btn-secondary" th:href="@{/categories}">← Quay lại</a>
+                    <button type="submit" class="btn btn-primary" th:text="#{button.update}">Cập nhật</button>
+                    <a class="btn btn-secondary" th:href="@{/categories}" th:text="#{button.back}">← Quay lại</a>
                 </div>
             </form>
 

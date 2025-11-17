@@ -160,27 +160,27 @@
     <meta charset="UTF-8">
     <title>Quản lý sản phẩm</title>
 </head>
-m
 <body>
 
 <!-- Nội dung trang -->
 <div th:fragment="pageContent">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Quản lý sản phẩm</h2>
-        <a th:href="@{/products/create}" class="btn btn-success">Thêm sản phẩm mới</a>
+        <h2 th:text="#{product.list.title}">Quản lý sản phẩm</h2>
+        <a th:href="@{/products/create}" class="btn btn-success" th:text="#{product.create.title}">Thêm sản phẩm mới</a>
     </div>
     <!-- Form tìm kiếm & lọc -->
     <form th:action="@{/products}" method="get" class="row g-3 mb-3 align-items-end">
         <div class="col-md-3">
-            <label class="form-label">Tên sản phẩm</label>
+            <label class="form-label" th:text="#{product.name}">Tên sản phẩm</label>
             <input type="text" name="name" placeholder="Nhập tên sản phẩm" th:value="${name}" class="form-control">
+
         </div>
 
         <div class="col-md-2">
-            <label class="form-label">Thể loại</label>
+            <label class="form-label" th:text="#{category.name}">Thể loại</label>
             <select name="categoryId" class="form-select">
-                <option value="">-- Tất cả --</option>
+                <option value=""> Tất cả </option>
                 <option th:each="category : ${categories}"
                         th:value="${category.id}"
                         th:text="${category.name}"
@@ -189,22 +189,24 @@ m
         </div>
 
         <div class="col-md-2">
-            <label class="form-label">Tình trạng</label>
+            <label class="form-label" th:text="#{instock.name}">Tình trạng</label>
             <select name="inStock" class="form-select">
-                <option value="">-- Tất cả --</option>
+                <option value=""> Tất cả </option>
                 <option value="true" th:selected="${inStock == true}">Còn hàng</option>
                 <option value="false" th:selected="${inStock == false}">Hết hàng</option>
             </select>
         </div>
 
         <div class="col-md-2">
-            <label class="form-label">Giá từ</label>
+            <label class="form-label" th:text="#{price.min}">Giá từ</label>
             <input type="number" name="minPrice" placeholder="Min" th:value="${minPrice}" class="form-control">
+
         </div>
 
         <div class="col-md-2">
-            <label class="form-label">Đến</label>
+            <label class="form-label" th:text="#{price.max}">Đến</label>
             <input type="number" name="maxPrice" placeholder="Max" th:value="${maxPrice}" class="form-control">
+
         </div>
 
         <div class="col-md-1 d-grid">
@@ -250,7 +252,7 @@ m
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center" th:with="prevPage=${currentPage - 1}, nextPage=${currentPage + 1}">
             <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
-                <a class="page-link"
+                <a class="page-link" th:text="#{button.previous}"
                    th:href="@{/products(page=${prevPage}, size=${size}, name=${name}, categoryId=${categoryId}, inStock=${inStock}, minPrice=${minPrice}, maxPrice=${maxPrice}, sortField=${sortField}, sortDir=${sortDir})}">
                     Previous
                 </a>
@@ -263,7 +265,7 @@ m
             </li>
 
             <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
-                <a class="page-link"
+                <a class="page-link" th:text="#{button.next}"
                    th:href="@{/products(page=${nextPage}, size=${size}, name=${name}, categoryId=${categoryId}, inStock=${inStock}, minPrice=${minPrice}, maxPrice=${maxPrice}, sortField=${sortField}, sortDir=${sortDir})}">
                     Next
                 </a>
