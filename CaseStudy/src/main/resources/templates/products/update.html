@@ -1,28 +1,4 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" >-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<form th:action="@{/products/update}" method="post" th:object="${product}" enctype="multipart/form-data" >-->
-<!--    <input type="hidden" name="" th:field="*{id}"> <br>-->
-<!--    Tên sản phẩm  : <input type="text" th:field="*{nameProduct}"> <br>-->
-<!--    Giá sản phẩm : <input type="text" th:field="*{price}"> <br>-->
-<!--    Ảnh sản phẩm :<img th:if="${product.image}" th:src="@{${product.image}}" alt="image" width="200">-->
-<!--    <input type="file" name="imageProduct" > <br>-->
-<!--&lt;!&ndash;    <input type="text" th:field="*{image}"> <br>&ndash;&gt;-->
-<!--    Mô tả sản phẩm <input type="text" th:field="*{description}"> <br>-->
-<!--    The loai sản phẩm-->
-<!--    <select th:field="*{category}" required>-->
-<!--        <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>-->
-<!--    </select> <br>-->
-<!--&lt;!&ndash;    <input type="text" th:selected="${product.category}" th:field="*{category}"> <br>&ndash;&gt;-->
-<!--    Tình trạng <input type="text" th:field="*{inStock}"> <br>-->
-<!--    <button type="submit">Lưu</button>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layout::layout(~{::pageContent})}">
